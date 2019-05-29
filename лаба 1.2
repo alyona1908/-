@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+
+int binary_search(int* array, int arr_size, int element);
+
+int main() {
+	
+    //setlocale(LC_CTYPE, "ukr");
+    //intitialize and input sizes of array
+    int first_arr_size, second_arr_size;
+    //cout<<"Введiть розмiр першого i другого масивiв: ";
+    cin >> first_arr_size;
+    cin>> second_arr_size;
+    // create arrays
+    int first_arr[first_arr_size];
+    int second_arr[second_arr_size];
+ 
+    
+    // write arrays
+ 
+    for (int i = 0; i < first_arr_size; i++)
+    {
+       //cout<<"Введiть first_arr ["<<i<<"] ";
+	    cin >> first_arr[i];
+    }
+   
+    for (int i = 0; i < second_arr_size; i++)
+    {
+        //cout<<"Введiть second_arr ["<<i<<"] ";
+		cin >> second_arr[i];
+    }
+    
+    // check
+ 
+ 
+    for (int i = 0; i < second_arr_size; i++)
+    {
+        if(binary_search(first_arr, first_arr_size, second_arr[i]) != -1)
+        {
+            cout << "YES\n";
+
+        } else {
+            cout << "NO\n";
+        }
+    }
+}
+
+int binary_search(int* array, int arr_size, int element)
+{
+    int left = 0;            
+    int right = arr_size - 1;    
+ 
+    while (left <= right) 
+    {
+ 
+        int m = (left + right) / 2;
+ 
+        if (array[m] == element) return m; // if m == key return key
+ 
+        if (array[m] < element) left = m + 1; // if m < key -> search in right
+ 
+        if (array[m] > element) right = m - 1; // if m > key -> serarch in left
+ 
+    }
+ 
+  return -1;
+}
