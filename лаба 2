@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int *a; 
+    int size; 
+    
+    
+   /* cout << "n = ";*/
+    cin >> size;
+
+    if (size <= 0) {
+        
+       /* cerr << "Invalid size" << endl;*/
+        return 1;
+    }
+
+    a = new int[size]; 
+
+    
+    for (int i = 0; i < size; i++) {
+        /*cout << "a[" << i << "] = ";*/
+        cin >> a[i];
+    }
+
+    int temp; 
+
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+    
+
+    
+    for (int i = 0; i < size; i++) {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+
+    delete [] a; 
+    
+    return 0;
+}
